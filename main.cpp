@@ -1,22 +1,32 @@
-#include<iostream>
-#include<vector>
+#include <iostream>
+#include <vector>
 
 using namespace std;
 
-int N,M;
+int N, M;
 vector<int> vec;
 
-void func(int cnt) {
+void func(int start) {
+    
+    if (vec.size() == M) {
+        for (int i = 0; i < M; i++) {
+            cout << vec[i] << " ";
+        }
+        cout << "\n";
+        return;
+    }
 
-
-//modified by kwonjaeyun
-
-
-
-
+    for (int i = start; i <= N; i++) {
+        vec.push_back(i);    
+        func(i + 1);         
+        vec.pop_back();      
+    }
 }
 
 int main() {
-   cin >> N >> M;
-   func(0);
+    cin >> N >> M;
+    
+    func(1); 
+    
+    return 0;
 }
